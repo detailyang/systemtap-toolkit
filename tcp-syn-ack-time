@@ -3,9 +3,9 @@
 use 5.006001;
 use strict;
 use warnings;
-sub usage();
-
 use Getopt::Std qw( getopts );
+
+sub usage();
 
 my %opts;
 
