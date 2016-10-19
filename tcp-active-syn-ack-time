@@ -45,29 +45,38 @@ chop $preamble;
 my $stap_src = <<_EOC_;
 $preamble
 
-global trace, intervals
+global collect, intervals
 
-probe tcp.ipv4.receive {
-	if (dport == $port) {
-		if (syn) {
-			t = gettimeofday_us()
-			trace[saddr, daddr, dport, sport] =  t
-		}
 
-		if (ack) {
-			begin = trace[saddr, daddr, dport, sport]
-			now = gettimeofday_us()
-			if (begin) {
-				intervals <<< 	now - begin
-			}
-			delete trace[saddr, daddr, dport, sport]
-		}
-	}
+probe kernel.function("tcp_transmit_skb") {
+    t = gettimeofday_us()
+
+    tcp_state = tcp_ts_get_info_state(\$sk)
+    tcp_state_str = tcp_sockstate_str(tcp_state)
+
+    saddr = format_ipaddr(__ip_sock_saddr(\$sk), %{AF_INET%})
+    daddr = format_ipaddr(__ip_sock_daddr(\$sk), %{AF_INET%})
+
+    sport = __tcp_sock_sport(\$sk)
+    dport = __tcp_sock_dport(\$sk)
+
+    if (dport == $port) {
+        if (tcp_state_str == "TCP_SYN_SENT") {
+            collect[saddr, sport, daddr, dport] = t
+        }
+        if (tcp_state_str == "TCP_ESTABLISHED") {
+            syn_sent_time = collect[saddr, sport, daddr, dport]
+            if (syn_sent_time) {
+                intervals <<< t - syn_sent_time
+            }
+            delete collect[saddr, sport, daddr, dport]
+        }
+    }
 }
 
 probe timer.ms($time) {
 	if (\@count(intervals) > 0) {
-		printf("interval min:%dus, max:%dus avg:%dus, cnt:%d\\r\\n",
+		printf("dport:$port min:%dus, max:%dus avg:%dus, cnt:%d\\r\\n",
 				\@min(intervals), \@max(intervals), \@avg(intervals), \@count(intervals)
 		      )
 		print(\@hist_log(intervals))
@@ -83,7 +92,7 @@ if ($opts{d}) {
 	exit;
 }
 
-open my $in, "|stap --skip-badvars $stap_args -"
+open my $in, "|stap -g --skip-badvars $stap_args -"
     or die "Cannot run stap: $!\n";
 
 print $in $stap_src;
@@ -94,7 +103,7 @@ close $in;
 sub usage() {
     return <<'_EOC_';
 Usage:
-    tcp-syn-ack-time [optoins]
+    tcp-active-syn-ack-time [optoins]
 Options:
     -a <args>           Pass extra arguments to the stap utility.
     -t <time>(ms)       Time(ms) to execute.
@@ -102,6 +111,6 @@ Options:
     -h                  Print this usage.
     -p <port>           Specify the tcp dport.
 Examples:
-    tcp-syn-ack-time -p 80 -t 5000
+    tcp-active-syn-ack-time -p 80 -t 5000
 _EOC_
 }
