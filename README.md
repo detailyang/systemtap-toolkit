@@ -6,14 +6,15 @@ Table of Contents
 =================
 
 * [NAME](#name)
-* [tcp-syn-ack-time](#tcp-syn-ack-time)
+* [tcp-passive-syn-ack-time](#tcp-passive-syn-ack-time)
+* [tcp-active-syn-ack-time](#tcp-active-syn-ack-time)
 * [tcp-retrans](#tcp-retrans)
 
 
-tcp-syn-ack-time
+tcp-passive-syn-ack-time
 ===============
 ````bash
-[root@localhost tmp]# ./tcp-syn-ack-time -p 80 -t 5000
+[root@localhost tmp]# ./tcp-passive-syn-ack-timee -p 80 -t 5000
 Collecting tcp dport (80)...syn-ack time
 
 interval min:197us, max:858us avg:519us, cnt:3
@@ -27,6 +28,25 @@ value |-------------------------------------------------- count
  2048 |                                                   0
 ````
 
+
+
+tcp-active-syn-ack-time
+===============
+
+````bash
+[root@localhost systemtap-toolkit]# ./tcp-active-syn-ack-time -p 80 -t 5000
+Collecting tcp dport (80)...syn-ack time
+
+dport:80 min:417us, max:542us avg:460us, cnt:3
+value |-------------------------------------------------- count
+   64 |                                                   0
+  128 |                                                   0
+  256 |@@                                                 2
+  512 |@                                                  1
+ 1024 |                                                   0
+ 2048 |                                                   0
+
+````
 
 tcp-retrans
 ===========
