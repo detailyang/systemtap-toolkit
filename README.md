@@ -9,6 +9,7 @@ Table of Contents
 * [tcp-passive-syn-ack-time](#tcp-passive-syn-ack-time)
 * [tcp-active-syn-ack-time](#tcp-active-syn-ack-time)
 * [tcp-retrans](#tcp-retrans)
+* [who-open-file](#who-open-file)
 
 
 tcp-passive-syn-ack-time
@@ -57,4 +58,15 @@ Printing tcp retransmission
 10.0.2.15:49896 -> 172.17.9.41:80 state:TCP_SYN_SENT rto:0 -> 1000 ms
 10.0.2.15:49896 -> 172.17.9.41:80 state:TCP_SYN_SENT rto:1000 -> 2000 ms
 10.0.2.15:49896 -> 172.17.9.41:80 state:TCP_SYN_SENT rto:2000 -> 4000 ms
+````
+
+who-open-file
+=============
+
+````bash
+[root@localhost systemtap-toolkit]# ./who-open-file -f 123 -t 10000
+Collecting who is opening filename 123
+
+cat(13740) is opening the filename: "123"
+cat(13741) is opening the filename: "123"
 ````
