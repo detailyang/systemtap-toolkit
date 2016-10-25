@@ -89,7 +89,7 @@ telnet(8070) is connecting to AF_INET@192.168.33.10:1800
 
 sample-bt
 =========
-from [agentzh(https://github.com/openresty/nginx-systemtap-toolkit#sample-bt)
+from [agentzh](https://github.com/openresty/nginx-systemtap-toolkit#sample-bt)
 ````bash
 $ ./sample-bt -p 8736 -t 5 -u > a.bt
 WARNING: Tracing 8736 (/opt/nginx/sbin/nginx) in user-space only...
