@@ -9,14 +9,14 @@ sub usage();
 
 my %opts;
 
-getopts("ht:a:p", \%opts) or die usage();
+getopts("dht:a:p:", \%opts) or die usage();
 
 my $stap_args = $opts{a} || '';
-my $p = $opts{p} || 0;
+my $pid = $opts{p} || 0;
 my $time = $opts{t} || 20000;
 
-if ($p !~ /^\d+$/) {
-   die "Bad -p options value \"$p\": not look like pid";
+if ($pid !~ /^\d+$/) {
+   die "Bad -p options value \"$pid\": not look like pid";
 }
 
 if ($time !~ /^\d+$/) {
@@ -24,13 +24,13 @@ if ($time !~ /^\d+$/) {
 }
 
 my $condition = "";
-if ($p != 0) {
+if ($pid != 0) {
 	$condition = "if (pid() != target()) next";
 }
 
 my $preamble = <<_EOC_;
 probe begin {
-    printf("Tracing ($p) syscall connect \\n\\n")
+    printf("Tracing ($pid) syscall connect \\n\\n")
 }
 _EOC_
 chop $preamble;
@@ -53,8 +53,14 @@ if ($opts{d}) {
     exit;
 }
 
-open my $in, "| stap --skip-badvars $stap_args -"
-	or die "Cannot run stap: $!\n";
+my $in;
+if ($pid > 0) {
+	open $in, "| stap --skip-badvars $stap_args -"
+		or die "Cannot run stap: $!\n";
+} else {
+	open $in, "| stap -x $pid --skip-badvars $stap_args -"
+		or die "Cannot run stap: $!\n";
+}
 
 print $in $stap_src;
 
