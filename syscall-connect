@@ -1,0 +1,75 @@
+#! /usr/bin/env perl
+
+use Getopt::Std qw( getopts );
+
+sub usage();
+
+my %opts;
+
+getopts("ht:a:p", \%opts) or die usage();
+
+my $stap_args = $opts{a} || '';
+my $p = $opts{p} || 0;
+my $time = $opts{t} || 20000;
+
+if ($p !~ /^\d+$/) {
+   die "Bad -p options value \"$p\": not look like pid";
+}
+
+if ($time !~ /^\d+$/) {
+   die "Bad -t options value \"$time\": not look like time";
+}
+
+my $condition = "";
+if ($p != 0) {
+	$condition = "if (pid() != target()) next";
+}
+
+my $preamble = <<_EOC_;
+probe begin {
+    printf("Tracing ($p) syscall connect \\n\\n")
+}
+_EOC_
+chop $preamble;
+
+my $stap_src = <<_EOC_;
+$preamble
+
+probe syscall.connect { 
+	$condition
+	printf("%s(%d) is connecting to %s@%s:%s\\n", execname(), pid(), uaddr_af, uaddr_ip, uaddr_ip_port)
+}
+
+probe timer.s($time) {
+	exit()
+}
+_EOC_
+
+if ($opts{d}) {
+    print $stap_src;
+    exit;
+}
+
+open my $in, "| stap --skip-badvars $stap_args -"
+	or die "Cannot run stap: $!\n";
+
+print $in $stap_src;
+
+close $in;
+
+
+
+sub usage() {
+	return <<_EOC_;
+Usage:
+    syscall-connect [optoins]
+Options:
+    -a <args>           Pass extra arguments to the stap utility.
+    -t <time>(ms)       Time(ms) to execute.
+    -d                  Dump out the systemtap script source.
+    -p                  trace the specified process by pid.
+    -h                  Print this usage.
+Examples:
+    syscall-connect -t 20000
+_EOC_
+}
