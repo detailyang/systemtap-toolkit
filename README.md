@@ -11,6 +11,7 @@ Table of Contents
 * [tcp-retrans](#tcp-retrans)
 * [who-open-file](#who-open-file)
 * [syscall-connect](#syscall-connect)
+* [sample-bt](#sample-bt)
 
 
 tcp-passive-syn-ack-time
@@ -84,4 +85,15 @@ telnet(8067) is connecting to AF_INET@192.168.33.10:1800
 telnet(8068) is connecting to AF_INET@192.168.33.10:1800
 telnet(8069) is connecting to AF_INET@192.168.33.10:1800
 telnet(8070) is connecting to AF_INET@192.168.33.10:1800
+````
+
+sample-bt
+=========
+from (agentzh)[https://github.com/openresty/nginx-systemtap-toolkit#sample-bt]
+````bash
+$ ./sample-bt -p 8736 -t 5 -u > a.bt
+WARNING: Tracing 8736 (/opt/nginx/sbin/nginx) in user-space only...
+WARNING: Missing unwind data for module, rerun with 'stap -d stap_df60590ce8827444bfebaf5ea938b5a_11577'
+WARNING: Time's up. Quitting now...(it may take a while)
+WARNING: Number of errors: 0, skipped probes: 24
 ````
