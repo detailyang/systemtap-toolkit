@@ -55,10 +55,10 @@ if ($opts{d}) {
 
 my $in;
 if ($pid > 0) {
-	open $in, "| stap --skip-badvars $stap_args -"
+	open $in, "| stap --skip-badvars -x $pid $stap_args -"
 		or die "Cannot run stap: $!\n";
 } else {
-	open $in, "| stap -x $pid --skip-badvars $stap_args -"
+	open $in, "| stap --skip-badvars $stap_args -"
 		or die "Cannot run stap: $!\n";
 }
 
