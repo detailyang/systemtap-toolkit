@@ -1,5 +1,8 @@
 #! /usr/bin/env perl
 
+use 5.0006001;
+use strict;
+use warnings;
 use Getopt::Std qw( getopts );
 
 sub usage();
@@ -35,7 +38,7 @@ chop $preamble;
 my $stap_src = <<_EOC_;
 $preamble
 
-probe syscall.connect { 
+probe syscall.connect {
 	$condition
 	printf("%s(%d) is connecting to %s@%s:%s\\n", execname(), pid(), uaddr_af, uaddr_ip, uaddr_ip_port)
 }
