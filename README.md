@@ -10,6 +10,7 @@ Table of Contents
 * [tcp-active-syn-ack-time](#tcp-active-syn-ack-time)
 * [tcp-retrans](#tcp-retrans)
 * [who-open-file](#who-open-file)
+* [syscall-connect](#syscall-connect)
 
 
 tcp-passive-syn-ack-time
@@ -69,4 +70,18 @@ Collecting who is opening filename 123
 
 cat(13740) is opening the filename: "123"
 cat(13741) is opening the filename: "123"
+````
+
+syscall-connect
+==============
+````bash
+telnet(8062) is connecting to AF_INET@192.168.33.10:1800
+telnet(8063) is connecting to AF_INET@192.168.33.10:1800
+telnet(8064) is connecting to AF_INET@192.168.33.10:1800
+telnet(8065) is connecting to AF_INET@192.168.33.10:1800
+telnet(8066) is connecting to AF_INET@192.168.33.10:1800
+telnet(8067) is connecting to AF_INET@192.168.33.10:1800
+telnet(8068) is connecting to AF_INET@192.168.33.10:1800
+telnet(8069) is connecting to AF_INET@192.168.33.10:1800
+telnet(8070) is connecting to AF_INET@192.168.33.10:1800
 ````
