@@ -43,7 +43,7 @@ probe syscall.connect {
 	printf("%s(%d) is connecting to %s@%s:%s\\n", execname(), pid(), uaddr_af, uaddr_ip, uaddr_ip_port)
 }
 
-probe timer.s($time) {
+probe timer.ms($time) {
 	exit()
 }
 _EOC_
