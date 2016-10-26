@@ -11,6 +11,11 @@ my %opts;
 
 getopts("dht:a:p:", \%opts) or die usage();
 
+if ($opts{h}) {
+    print usage();
+    exit;
+}
+
 my $stap_args = $opts{a} || '';
 my $pid = $opts{p} || 0;
 my $time = $opts{t} || 20000;
