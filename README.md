@@ -12,6 +12,7 @@ Table of Contents
 * [who-open-file](#who-open-file)
 * [syscall-connect](#syscall-connect)
 * [sample-bt](#sample-bt)
+* [watch-wvar](#watch-var)
 
 
 tcp-passive-syn-ack-time
@@ -96,4 +97,13 @@ WARNING: Tracing 8736 (/opt/nginx/sbin/nginx) in user-space only...
 WARNING: Missing unwind data for module, rerun with 'stap -d stap_df60590ce8827444bfebaf5ea938b5a_11577'
 WARNING: Time's up. Quitting now...(it may take a while)
 WARNING: Number of errors: 0, skipped probes: 24
+````
+
+watch-var
+=========
+
+````bash
+[root@localhost systemtap-toolkit]# ./watch-var  -f syscall.open -v filename -p 25849
+WARNING: Tracing vars syscall.open filename in 25849...
+a.out[25849] kernel.function("SyS_open@fs/open.c:1036").call filename: "" => ""./test""
 ````
