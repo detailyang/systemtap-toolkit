@@ -65,7 +65,6 @@ probe timer.ms($time) {
 }
 _EOC_
 
-
 if ($opts{d}) {
     print $stap_src;
     exit();
