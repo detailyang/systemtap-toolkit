@@ -1,5 +1,7 @@
 #! /usr/bin/env perl
 
+# Copyright (C) YangBingwu (detailyang)
+
 use 5.0006001;
 use strict;
 use warnings;
