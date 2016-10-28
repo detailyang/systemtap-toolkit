@@ -12,6 +12,11 @@ my %opts;
 
 getopts("ht:p:dt:s:c:T:", \%opts) or die usage();
 
+if ($opts{h}) {
+    print usage();
+    exit;
+}
+
 my $count = $opts{c} || 0;
 
 if ($count !~ /^\d+$/) {
@@ -226,7 +231,7 @@ Options:
     -t <time>(ms)       Time(ms) to execute.
     -T <slow time>(ms)  Slow Time(ms) to filter.
     -p <port>           Specify the tcp dport.
-    -s <status>20x, 201 Status code to specify
+    -s <status>20x,30x Status code to specify
     -c <count>          Stop after watching count
     -d                  Dump out the systemtap script source.
     -h                  Print this usage.
