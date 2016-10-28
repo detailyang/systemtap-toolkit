@@ -14,6 +14,7 @@ Table of Contents
 * [sample-bt](#sample-bt)
 * [watch-wvar](#watch-var)
 * [track-tcp-packet](#track-tcp-packet)
+* [ngx-req-watch](#ngx-req-watch)
 
 
 tcp-passive-syn-ack-time
@@ -119,3 +120,14 @@ track-tcp-packet
 1477538812953843 127.0.0.1:60938 <= 127.0.0.1:9999 len:52 SYN:0 ACK:1 FIN:0 RST:0 PSH:0 URG:0
 1477538812956468 127.0.0.1:9999 => 127.0.0.1:60938 len:52 SYN:0 ACK:1 FIN:1 RST:0 PSH:0 URG:0
 ````
+
+ngx-req-watch
+===============
+[root@localhost systemtap-toolkit]# ./ngx-req-watch -p 5614
+WARNING: watching /opt/tengine/sbin/nginx(8521 8522 8523 8524) requests
+nginx(8523) GET URI:/123?a=123 HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
+nginx(8523) GET URI:/123?a=123 HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
+nginx(8523) GET URI:/123?a=123&b=123 HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
+nginx(8523) GET URI:/123?w HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
+nginx(8523) GET URI:/123?w HOST:test STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
+nginx(8523) GET URI:/123?w=a HOST:test STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
