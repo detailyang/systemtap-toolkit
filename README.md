@@ -123,6 +123,7 @@ track-tcp-packet
 
 ngx-req-watch
 ===============
+````bash
 [root@localhost systemtap-toolkit]# ./ngx-req-watch -p 5614
 WARNING: watching /opt/tengine/sbin/nginx(8521 8522 8523 8524) requests
 nginx(8523) GET URI:/123?a=123 HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
@@ -131,3 +132,4 @@ nginx(8523) GET URI:/123?a=123&b=123 HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD
 nginx(8523) GET URI:/123?w HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
 nginx(8523) GET URI:/123?w HOST:test STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
 nginx(8523) GET URI:/123?w=a HOST:test STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
+````
