@@ -20,7 +20,6 @@ if ($opts{h}) {
 }
 
 my $count = $opts{c} || 0;
-
 if ($count !~ /^\d+$/) {
     die "Bad -t option value \"$count\": not look like count\n";
 }
@@ -43,23 +42,18 @@ if ($uri) {
 _EOS_
 }
 
-
-
 my $time = $opts{t} || 0;
-
 if ($time !~ /^\d+$/) {
     die "Bad -t option value \"$time\": not look like time\n";
 }
 
 my $slowtime = $opts{T} || 0;
-
 if ($slowtime !~ /^\d+$/) {
     die "Bad -T option value \"$slowtime\": not look like time\n";
 }
 
 my $pid = $opts{p}
     or die "No nginx process pid specified by the -p option\n";
-
 if ($pid !~ /^\d+$/) {
     die "Bad -p option value \"$pid\": not look like a pid\n";
 }
