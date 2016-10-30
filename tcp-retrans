@@ -48,7 +48,11 @@ probe kernel.function("tcp_retransmit_skb") {
     state = tcp_ts_get_info_state(sock)
 
     if (lastrto != rto) {
-        printf("%s:%d -> %s:%d state:%s rto:%d -> %d ms\\r\\n", saddr, sport, daddr, dport, tcp_sockstate_str(state), lastrto/1000, rto/1000)
+        if (lastrto) {
+            printf("%s:%d -> %s:%d state:%s rto:%d -> %d ms\\r\\n", saddr, sport, daddr, dport, tcp_sockstate_str(state), lastrto/1000, rto/1000)
+        } else {
+            printf("%s:%d -> %s:%d state:%s rto: %d ms\\r\\n", saddr, sport, daddr, dport, tcp_sockstate_str(state), rto/1000)
+        }
     }
 
     record[saddr, sport, daddr, dport] = rto
