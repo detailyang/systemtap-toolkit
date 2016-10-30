@@ -15,6 +15,7 @@ Table of Contents
 * [watch-wvar](#watch-var)
 * [track-tcp-packet](#track-tcp-packet)
 * [ngx-req-watch](#ngx-req-watch)
+* [stracelike](#stracelike)
 
 
 tcp-passive-syn-ack-time
@@ -132,4 +133,14 @@ nginx(8523) GET URI:/123?a=123&b=123 HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD
 nginx(8523) GET URI:/123?w HOST:127.0.0.1 STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
 nginx(8523) GET URI:/123?w HOST:test STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
 nginx(8523) GET URI:/123?w=a HOST:test STATUS:200 FROM 127.0.0.1 FD:16 RT: 0ms
+````
+
+stracelike
+==============
+````bash
+[root@localhost systemtap-toolkit]# ./stracelike -p 4580 -t 20000
+WARNING: stracing syscall
+Sat Oct 29 12:46:19 2016.094410  epoll_wait(16, 0x1e17b40, 512, 100) = 0 <0.100334>
+Sat Oct 29 12:46:19 2016.194756  epoll_wait(16, 0x1e17b40, 512, 100) = 0 <0.100227>
+Sat Oct 29 12:46:19 2016.295006  epoll_wait(16, 0x1e17b40, 512, 100) = 0 <0.101086>
 ````
