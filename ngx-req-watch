@@ -205,6 +205,7 @@ close $in;
 
 sub get_child_processes {
     my $pid = shift;
+    # iterate /proc/pid is more compatible with /proc/pid/children with high kernel
     my @files = glob "/proc/[0-9]*/stat";
     my @children;
 
