@@ -233,7 +233,7 @@ Options:
     -t <time>(ms)       Time(ms) to execute.
     -T <slow time>(ms)  Slow Time(ms) to filter.
     -p <port>           Specify the tcp dport.
-    -s <status>20x,30x Status code to specify
+    -s <status>20x,500  Status code to specify.
     -c <count>          Stop after watching count
     -d                  Dump out the systemtap script source.
     -h                  Print this usage.
