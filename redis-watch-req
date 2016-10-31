@@ -11,12 +11,31 @@ sub usage();
 
 my %opts;
 
-getopts("a:t:hp:dc:T:t:", \%opts) or die usage();
+getopts("a:t:hp:dc:T:t:C:K:", \%opts) or die usage();
 
 if ($opts{h}) {
     print usage();
     exit;
 }
+
+my $command = $opts{C} || "";
+my $command_condition = "";
+
+if ($command) {
+   $command_condition = <<_EOS_
+   if (cmd !~ "$command") { next }
+_EOS_
+}
+
+my $key = $opts{C} || "";
+my $key_condition = "";
+
+if ($key) {
+   $key_condition = <<_EOS_
+   if (key !~ "$key") { next }
+_EOS_
+}
+
 
 my $time = $opts{t} || 20000;
 if ($time !~ /^\d+$/) {
@@ -29,7 +48,7 @@ if ($slow !~ /^\d+$/) {
 }
 
 my $slow_codition = <<_EOS_;
-if (elapsed < $slow) {
+if (elapsed/1000 < $slow) {
     next
 }
 _EOS_
@@ -326,6 +345,7 @@ probe process("/bin/redis-server").function("*Command") {
                 keyobj = $c->argv[1]
                 key = objtostring(keyobj)
             }
+            $command_condition
 
             tracef[pid(), ppfunc()] = sprintf("id:%d fd:%d ==> %s %s #%d", id, fd, cmd, key, valuelen)
             tracet[pid(), ppfunc()] = gettimeofday_us()
@@ -425,8 +445,10 @@ Options:
     -h                  Print this usage.
     -p <pid>            Specify the user process pid.
     -c <count>          Specify the max requests default 100.
-    -t <time>ms         Specify the number of mseconds for sampling.
-    -T <slow time>us    Specify the threshold of mseconds for sampling.
+    -C <CMD>            Specify the command to sampling.
+    -K <KEY>            Specify the key to sampling.
+    -t <time>ms         Specify the number of milliseconds for sampling.
+    -T <slow time>ms    Specify the threshold of milliseconds for sampling.
 
 Examples:
     redis-watch-req -p 12345 -t 10000 -c 1000
