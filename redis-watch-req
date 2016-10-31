@@ -312,7 +312,7 @@ _EOS_
 my $stap_src = <<_EOS_;
 $preamble
 
-probe process("/bin/redis-server").function("*Command") {
+probe process("$redis_path").function("*Command") {
     $pid_codition
 	if (!(ppfunc() in whitelist)) {
 		next
@@ -360,7 +360,7 @@ probe process("/bin/redis-server").function("*Command") {
     }
 }
 
-probe process("/bin/redis-server").function("_addReplyToBuffer") {
+probe process("$redis_path").function("_addReplyToBuffer") {
     $pid_codition
 	bytes = tracer[pid()]
 	if (!bytes) {
@@ -372,7 +372,7 @@ probe process("/bin/redis-server").function("_addReplyToBuffer") {
 	tracer[pid()] = bytes
 }
 
-probe process("/bin/redis-server").function("_addReplyObjectToList") {
+probe process("$redis_path").function("_addReplyObjectToList") {
     $pid_codition
 	bytes = tracer[pid()]
 	if (!bytes) {
@@ -384,7 +384,7 @@ probe process("/bin/redis-server").function("_addReplyObjectToList") {
 	tracer[pid()] = bytes
 }
 
-probe process("/bin/redis-server").function("_addReplySdsToList") {
+probe process("$redis_path").function("_addReplySdsToList") {
     $pid_codition
 	bytes = tracer[pid()]
 	if (!bytes) {
@@ -396,14 +396,14 @@ probe process("/bin/redis-server").function("_addReplySdsToList") {
 	tracer[pid()] = bytes
 }
 
-probe process("/bin/redis-server").function("_addReplyObjectToList")!,
-      process("/bin/redis-server").function("asyncCloseClientOnOutputBufferLimitReached")
+probe process("$redis_path").function("_addReplyObjectToList")!,
+      process("$redis_path").function("asyncCloseClientOnOutputBufferLimitReached")
 {
     $pid_codition
 	tracer[pid()] = \$c->reply_bytes
 }
 
-probe process("/bin/redis-server").function("*Command").return {
+probe process("$redis_path").function("*Command").return {
     $pid_codition
 	if (!(ppfunc() in whitelist)) {
 		next
