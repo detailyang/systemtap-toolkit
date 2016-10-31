@@ -114,7 +114,6 @@ Options:
 
 Examples:
     stracelike -p 12345 -t 10000
-_EOC_
 _EOS_
 }
 
