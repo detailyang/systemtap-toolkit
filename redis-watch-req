@@ -317,7 +317,6 @@ probe process("$redis_path").function("*Command") {
 	if (!(ppfunc() in whitelist)) {
 		next
 	} else {
-        $count_condition
         if (\@defined(\$c)) {
             id = $c->id
             fd = $c->fd
@@ -353,6 +352,7 @@ probe process("$redis_path").function("*Command") {
                 key = objtostring(keyobj)
             }
             $command_condition
+            $count_condition
 
             tracef[pid(), ppfunc()] = sprintf("id:%d fd:%d ==> %s %s #%d", id, fd, cmd, key, valuelen)
             tracet[pid(), ppfunc()] = gettimeofday_us()
