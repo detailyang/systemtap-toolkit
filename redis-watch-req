@@ -82,6 +82,13 @@ for my $pid (@pids) {
             "you do not have enough permissions.\n";
     }
     $redis_path = readlink $exec_file;
+
+    my $result = `$redis_path --version`;
+    if ($result =~ /Redis server v=(\d+)\.(\d+).(\d+) /) {
+        if ($1 < 2 or $1 >= 3) {
+            die "only support redis version 2.x.y";
+        }
+    }
 }
 
 my $pid_preamble = join "\r\n", map("    pids[\"$_\"] = 1", @pids);
