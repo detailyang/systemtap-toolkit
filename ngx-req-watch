@@ -19,7 +19,7 @@ if ($opts{h}) {
     exit;
 }
 
-my $count = $opts{c} || 0;
+my $count = $opts{c} || 100;
 if ($count !~ /^\d+$/) {
     die "Bad -t option value \"$count\": not look like count\n";
 }
@@ -236,11 +236,11 @@ Usage:
     ngx-req-watch [optoins]
 Options:
     -a <args>           Pass extra arguments to the stap utility.
-    -t <time>(ms)       Time(ms) to execute.
-    -T <slow time>(ms)  Slow Time(ms) to filter.
+    -c <count>          Specify the max requests default 100.
+    -t <time>ms         Specify the number of mseconds for sampling.
+    -T <slow time>ms    Specify the threshold of mseconds for sampling.
     -p <port>           Specify the tcp dport.
     -s <status>20x,500  Status code to specify.
-    -c <count>          Stop after watching count.
     -u <uri> /abcd      URI to specify which support POSIX regular.
     -d                  Dump out the systemtap script source.
     -h                  Print this usage.
