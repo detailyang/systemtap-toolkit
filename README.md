@@ -16,7 +16,8 @@ Table of Contents
 * [track-tcp-packet](#track-tcp-packet)
 * [ngx-req-watch](#ngx-req-watch)
 * [stracelike](#stracelike)
-
+* [redis-watch-req](#redis-watch-req)
+* [libcurl-watch-req](#libcurl-watch-req)
 
 tcp-passive-syn-ack-time
 ===============
@@ -143,4 +144,24 @@ WARNING: stracing syscall
 Sat Oct 29 12:46:19 2016.094410  epoll_wait(16, 0x1e17b40, 512, 100) = 0 <0.100334>
 Sat Oct 29 12:46:19 2016.194756  epoll_wait(16, 0x1e17b40, 512, 100) = 0 <0.100227>
 Sat Oct 29 12:46:19 2016.295006  epoll_wait(16, 0x1e17b40, 512, 100) = 0 <0.101086>
+````
+
+redis-watch-req
+===============
+````bash
+[root@localhost systemtap-toolkit]# ./redis-watch-req -p 23261
+WARNING: watching /usr/bin/redis-server(23261) requests
+redis-server(23261) RT:30(us) REQ: id:2 fd:5 ==> get a #-1 RES: #9
+redis-server(23261) RT:23(us) REQ: id:2 fd:5 ==> set a #12 RES: #5
+redis-server(23261) RT:16(us) REQ: id:2 fd:5 ==> get foo #-1 RES: #5
+````
+
+libcurl-watch-req
+=================
+````bash
+[root@localhost systemtap-toolkit]# ./libcurl-watch-req
+WARNING: Tracing libcurl (0) ...
+curl(23759) URL:http://www.google.com RT:448(ms) RTCODE:0
+curl(23767) URL:http://www.facebook.com/asdfasdf RT:596(ms) RTCODE:0
+curl(23769) URL:https://www.facebook.com/asdfasdf RT:902(ms) RTCODE:0
 ````
