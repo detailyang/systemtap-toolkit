@@ -240,7 +240,7 @@ Options:
     -t <time>ms         Specify the number of mseconds for sampling.
     -T <slow time>ms    Specify the threshold of mseconds for sampling.
     -p <port>           Specify the tcp dport.
-    -s <status>20x,500  Status code to specify.
+    -s <status>20x,500  Specify code to sampling.
     -u <uri> /abcd      URI to specify which support POSIX regular.
     -d                  Dump out the systemtap script source.
     -h                  Print this usage.
