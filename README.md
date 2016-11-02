@@ -46,7 +46,7 @@ Table of Contents
 
 contribute
 ==========
-You can choose the the following to help this project.
+You can choose the ways as the following to help this project.
 
 1. To contribute to this project, clone this repo locally and commit your code on a separate branch.
 2. Create Github issues.
