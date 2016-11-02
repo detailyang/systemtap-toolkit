@@ -18,6 +18,7 @@ Table of Contents
 * [stracelike](#stracelike)
 * [redis-watch-req](#redis-watch-req)
 * [libcurl-watch-req](#libcurl-watch-req)
+* [pdomysql-watch-query](#pdomysql-watch-query)
 
 tcp-passive-syn-ack-time
 ===============
@@ -164,4 +165,13 @@ WARNING: Tracing libcurl (0) ...
 curl(23759) URL:http://www.google.com RT:448(ms) RTCODE:0
 curl(23767) URL:http://www.facebook.com/asdfasdf RT:596(ms) RTCODE:0
 curl(23769) URL:https://www.facebook.com/asdfasdf RT:902(ms) RTCODE:0
+````
+
+pdomysql-watch-req
+=================
+````bash
+Tracing pdo-mysql (0)
+172.17.10.196:3306@root: SELECT * from person RT:0(ms) RTCODE:1
+172.17.10.196:3306@root: SELECT * from person RT:8(ms) RTCODE:1
+172.17.10.196:3306@root: SELECT sleep(5) RT:5012(ms) RTCODE:1
 ````
