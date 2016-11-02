@@ -167,7 +167,7 @@ curl(23767) URL:http://www.facebook.com/asdfasdf RT:596(ms) RTCODE:0
 curl(23769) URL:https://www.facebook.com/asdfasdf RT:902(ms) RTCODE:0
 ````
 
-pdomysql-watch-req
+pdomysql-watch-query
 =================
 ````bash
 Tracing pdo-mysql (0)
