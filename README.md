@@ -1,6 +1,7 @@
 [systemtap]: https://sourceware.org/systemtap/
 [agentzh]: https://github.com/openresty/nginx-systemtap-toolkit#sample-bt
-
+[@agentzh]: https://github.com/agentzh
+[@brendangregg]: https://github.com/brendangregg
 
 <h1 align="center">systemtap-toolkit</h1>
 
@@ -26,6 +27,8 @@ Table of Contents
 
 * [NAME](#name)
 * [Description](#description)
+* [Contribute](#contribute)
+* [Thanks](#thanks)
 * [tcp-passive-syn-ack-time](#tcp-passive-syn-ack-time)
 * [tcp-active-syn-ack-time](#tcp-active-syn-ack-time)
 * [tcp-retrans](#tcp-retrans)
@@ -39,6 +42,19 @@ Table of Contents
 * [redis-watch-req](#redis-watch-req)
 * [libcurl-watch-req](#libcurl-watch-req)
 * [pdomysql-watch-query](#pdomysql-watch-query)
+
+
+contribute
+==========
+You can choose the the following to help this project.
+
+1. To contribute to this project, clone this repo locally and commit your code on a separate branch.
+2. Create Github issues.
+3. You can reach me detailyang@gmail.com.
+
+thanks
+==========
+Special thanks to [@brendangregg] and [@agentzh]. All I have learn is from their amazing blog posts and projects:)
 
 tcp-passive-syn-ack-time
 ===============
