@@ -42,6 +42,8 @@ tcp-passive-syn-ack-time
 ===============
 It's used to measure the time of syn packet to ack packet on the server side in the tcp-3-shakehands.
 
+![tcp](https://raw.githubusercontent.com/detailyang/systemtap-toolkit/master/fixtures/tcp.jpg)
+
 ````bash
 [root@localhost tmp]# ./tcp-passive-syn-ack-timee -p 80 -t 5000
 Collecting tcp dport (80)...syn-ack time
