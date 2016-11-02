@@ -147,15 +147,19 @@ WARNING: Tracing vars syscall.open filename in 25849...
 a.out[25849] kernel.function("SyS_open@fs/open.c:1036").call filename: "" => ""./test""
 ````
 
-track-tcp-packet
+tcp-trace-packet
 ================
 Like tcpdump, it's used to tracing tcp packet with more detail include tcp flag.
+
 ````bash
-1477538812953822 127.0.0.1:9999 => 127.0.0.1:60938 len:202 SYN:0 ACK:1 FIN:0 RST:0 PSH:1 URG:0
-1477538812953831 127.0.0.1:9999 <= 127.0.0.1:60938 len:202 SYN:0 ACK:1 FIN:0 RST:0 PSH:1 URG:0
-1477538812953837 127.0.0.1:60938 => 127.0.0.1:9999 len:52 SYN:0 ACK:1 FIN:0 RST:0 PSH:0 URG:0
-1477538812953843 127.0.0.1:60938 <= 127.0.0.1:9999 len:52 SYN:0 ACK:1 FIN:0 RST:0 PSH:0 URG:0
-1477538812956468 127.0.0.1:9999 => 127.0.0.1:60938 len:52 SYN:0 ACK:1 FIN:1 RST:0 PSH:0 URG:0
+[root@localhost systemtap-toolkit]# ./track-tcp-packet
+WARNING: tracking 0 tcp packet
+1478067249998698 10.0.2.15:22 => 10.0.2.2:50627 len:92 SYN:0 ACK:1 FIN:0 RST:0 PSH:1 URG:0
+1478067249998955 10.0.2.2:50627 <= 10.0.2.15:22 len:40 SYN:0 ACK:1 FIN:0 RST:0 PSH:0 URG:0
+1478067250199252 10.0.2.15:22 => 10.0.2.2:50627 len:172 SYN:0 ACK:1 FIN:0 RST:0 PSH:1 URG:0
+1478067250199559 10.0.2.2:50627 <= 10.0.2.15:22 len:40 SYN:0 ACK:1 FIN:0 RST:0 PSH:0 URG:0
+1478067250399756 10.0.2.15:22 => 10.0.2.2:50627 len:100 SYN:0 ACK:1 FIN:0 RST:0 PSH:1 URG:0
+1478067250399963 10.0.2.2:50627 <= 10.0.2.15:22 len:40 SYN:0 ACK:1 FIN:0 RST:0 PSH:0 URG:0
 ````
 
 ngx-req-watch
