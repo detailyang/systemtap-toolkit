@@ -17,7 +17,7 @@ Description
 
 This is my systemtap toolkit to online analyze the complicated problem on production with heavy load. All tools are based on my favorite linux tracing/probing tool [systemtap].
 
-Any guys which want to know  what the hell it is in the kernel should be to learn [systemtap] which is awesome tool:)
+Any guys which want to know  what the hell it is in the user space and kernel space should be to learn [systemtap] which is awesome tool:)
 
 Table of Contents
 =================
@@ -40,6 +40,8 @@ Table of Contents
 
 tcp-passive-syn-ack-time
 ===============
+It's used to measure the time of syn packet to ack packet on the server side in the tcp-3-shakehands.
+
 ````bash
 [root@localhost tmp]# ./tcp-passive-syn-ack-timee -p 80 -t 5000
 Collecting tcp dport (80)...syn-ack time
