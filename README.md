@@ -35,7 +35,7 @@ Table of Contents
 * [who-open-file](#who-open-file)
 * [syscall-connect](#syscall-connect)
 * [sample-bt](#sample-bt)
-* [watch-wvar](#watch-var)
+* [watch-var](#watch-var)
 * [tcp-trace-packet](#tcp-trace-packet)
 * [ngx-req-watch](#ngx-req-watch)
 * [stracelike](#stracelike)
