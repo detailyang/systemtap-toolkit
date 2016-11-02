@@ -126,6 +126,10 @@ probe begin {
     warn("watching $redis_path($pid) requests\\n")
     nreqs = 0
     $pid_preamble
+    whitelist["stepCommand"] = 1
+    whitelist["snowflakeCommand"] = 1
+    whitelist["objectidCommand"] = 1
+    whitelist["serialidCommand"] = 1
     whitelist["getCommand"] = 1
     whitelist["setCommand"] = 1
     whitelist["setnxCommand"] = 1
