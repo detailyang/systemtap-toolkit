@@ -75,7 +75,7 @@ if ($pid) {
     $php_path = $path;
 }
 
-my $time = $opts{t} || 0;
+my $time = $opts{t} || 20000;
 if ($time !~ /^\d+$/) {
     die "Bad -t option value \"$time\": not look like time\n";
 }
@@ -93,7 +93,7 @@ global trace
 global nreqs
 
 probe begin {
-    print("Tracing pdo-mysql ($pid)\\n")
+    warn("Tracing pdo-mysql ($pid)")
     nreqs = 0
 }
 _EOS_
@@ -137,7 +137,7 @@ probe process("$php_path").function("pdo_mysql_stmt_execute").return {
            next
         }
         $count_condition
-        printf("%s RT:%d(ms) RTCODE:%d\\n", trace[tid()], elapsed, \$return)
+        printf("%s(%d) %s RT:%d(ms) RTCODE:%d\\n", execname(), pid(), trace[tid()], elapsed, \$return)
     }
 }
 
