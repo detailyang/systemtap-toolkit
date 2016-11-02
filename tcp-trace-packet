@@ -81,7 +81,7 @@ close $in;
 sub usage() {
     return <<'_EOS_';
 Usage:
-    track-tcp-packet [optoins]
+    tcp-trace-packet [optoins]
 Options:
     -a <args>           Pass extra arguments to the stap utility.
     -t <time>(ms)       Time(ms) to execute.
@@ -89,6 +89,6 @@ Options:
     -d                  Dump out the systemtap script source.
     -h                  Print this usage.
 Examples:
-    track-tcp-packet -t 20000 -p 12345
+    tcp-trace-packet -t 20000 -p 12345
 _EOS_
 }
