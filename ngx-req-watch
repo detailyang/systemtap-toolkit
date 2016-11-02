@@ -28,7 +28,7 @@ my $count_condition = "";
 if ($count > 0) {
     $count_condition = <<_EOS_;
     if (nreqs > $count) {
-        warn("exiting after $count requests")
+        warn("up to max requests:$count")
         exit();
     }
 _EOS_
@@ -181,7 +181,7 @@ probe timer.ms($time) {
 }
 %:
 probe end {
-    warn("Exiting....")
+    exit()
 }
 %)
 _EOS_
@@ -202,6 +202,11 @@ open my $in, "|stap --skip-badvars @opts $stap_args -"
 print $in $stap_src;
 
 close $in;
+
+if ($opts{d}) {
+    print $stap_src;
+    exit;
+}
 
 sub get_child_processes {
     my $pid = shift;
