@@ -33,7 +33,7 @@ Table of Contents
 * [syscall-connect](#syscall-connect)
 * [sample-bt](#sample-bt)
 * [watch-wvar](#watch-var)
-* [track-tcp-packet](#track-tcp-packet)
+* [tcp-trace-packet](#tcp-trace-packet)
 * [ngx-req-watch](#ngx-req-watch)
 * [stracelike](#stracelike)
 * [redis-watch-req](#redis-watch-req)
@@ -152,7 +152,7 @@ tcp-trace-packet
 Like tcpdump, it's used to tracing tcp packet with more detail include tcp flag.
 
 ````bash
-[root@localhost systemtap-toolkit]# ./track-tcp-packet
+[root@localhost systemtap-toolkit]# ./tcp-trace-packet
 WARNING: tracking 0 tcp packet
 1478067249998698 10.0.2.15:22 => 10.0.2.2:50627 len:92 SYN:0 ACK:1 FIN:0 RST:0 PSH:1 URG:0
 1478067249998955 10.0.2.2:50627 <= 10.0.2.15:22 len:40 SYN:0 ACK:1 FIN:0 RST:0 PSH:0 URG:0
