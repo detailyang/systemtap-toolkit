@@ -1,4 +1,6 @@
 [systemtap]: https://sourceware.org/systemtap/
+[agentzh]: https://github.com/openresty/nginx-systemtap-toolkit#sample-bt
+
 
 <h1 align="center">systemtap-toolkit</h1>
 
@@ -125,8 +127,8 @@ telnet(8070) is connecting to AF_INET@192.168.33.10:1800
 
 sample-bt
 =========
-It's from agentzh and be used to sampling the backtrace in the user space and kernel space.
-from [agentzh](https://github.com/openresty/nginx-systemtap-toolkit#sample-bt)
+It's from [agentzh] and be used to sampling the backtrace in the user space and kernel space.
+
 ````bash
 $ ./sample-bt -p 8736 -t 5 -u > a.bt
 WARNING: Tracing 8736 (/opt/nginx/sbin/nginx) in user-space only...
