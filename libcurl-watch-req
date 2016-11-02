@@ -153,7 +153,7 @@ close $in;
 sub usage() {
     return <<'_EOC_';
 Usage:
-    ngx-req-watch [optoins]
+    libcurl-watch-req [optoins]
 Options:
     -a <args>           Pass extra arguments to the stap utility.
     -c <count>          Specify the max requests default 100.
@@ -163,6 +163,6 @@ Options:
     -d                  Dump out the systemtap script source.
     -h                  Print this usage.
 Examples:
-    ngx-req-watch -p 12345 -c 100 -T 1000
+    libcurl-watch-req -p 12345 -c 100 -T 1000
 _EOC_
 }
