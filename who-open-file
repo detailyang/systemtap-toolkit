@@ -11,6 +11,13 @@ sub usage();
 
 my %opts;
 
+getopts("ha:t:f:", \%opts) or die usage();
+
+if ($opts{h}) {
+    print usage();
+    exit;
+}
+
 my $stap_args = $opts{a} || '';
 getopts('df:t:', \%opts) or die usage();
 
