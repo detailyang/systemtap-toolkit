@@ -454,7 +454,7 @@ Options:
     -a <args>           Pass extra arguments to the stap utility.
     -d                  Dump out the systemtap script source.
     -h                  Print this usage.
-    -p <pid>            Specify the user process pid.
+    -p <pid>            Specify the redis process pid.
     -c <count>          Specify the max requests default 100.
     -C <CMD>            Specify the command to sampling.
     -K <KEY>            Specify the key to sampling.
