@@ -53,7 +53,7 @@ if ($opts{d}) {
     exit();
 }
 
-open my $in, "| stap --skip-badvars - $filename";
+open my $in, "| stap $stap_args --skip-badvars - $filename";
 
 print $in $stap_src;
 
