@@ -26,7 +26,7 @@ my $stap_src = <<_EOC_;
 global r, w, io
 
 probe begin {
-    warn("Collecting IO Process Top 10")
+    warn("Collecting IO Process Top 10 with interval of ${time}ms")
 }
 
 probe vfs.write.return {
@@ -38,7 +38,7 @@ probe vfs.read.return {
 }
 
 probe timer.ms($time) {
-    printf("%16s\t%10s\t%10s\\n", "Process Name(pid)", "Read(KB)", "Write(KB)")
+    printf("%20s%6s\t%10s\t%10s\\n", "Process Name", "", "Read(KB)", "Write(KB)")
 
     foreach ([name, pid] in w) {
         io[name, pid] += w[name, pid]
@@ -49,7 +49,7 @@ probe timer.ms($time) {
     }
 
     foreach([name, pid] in io- limit 10) {
-        printf("%16s(%d)\t%10d\t%10d\\n", name, pid, r[name, pid]/1024, w[name, pid]/1024)
+        printf("%20s:%-6d\t%10d\t%10d\\n", name, pid, r[name, pid]/1024, w[name, pid]/1024)
     }
 
     delete r
