@@ -2,6 +2,7 @@
 [agentzh]: https://github.com/openresty/nginx-systemtap-toolkit#sample-bt
 [@agentzh]: https://github.com/agentzh
 [@brendangregg]: https://github.com/brendangregg
+[dwarf]: http://www.dwarfstd.org/
 
 <h1 align="center">systemtap-toolkit</h1>
 
@@ -27,6 +28,7 @@ Table of Contents
 
 * [NAME](#name)
 * [Description](#description)
+* [Requirements](#requirements)
 * [Contribute](#contribute)
 * [Thanks](#thanks)
 * [tcp-passive-syn-ack-time](#tcp-passive-syn-ack-time)
@@ -43,6 +45,25 @@ Table of Contents
 * [libcurl-watch-req](#libcurl-watch-req)
 * [pdomysql-watch-query](#pdomysql-watch-query)
 * [io-process-top](#io-process-top)
+
+requirements
+============
+
+we need [systemtap] and [dwarf].
+Some script is working on kernel space and other is working on the user space.
+
+For kernel space, we need kernel debuginfo like `kernel-debuginfo-3.10.0-327.28.3.el7.x86_64`.
+
+For user space, we need user application debuginfo like `redis-debuginfo-2.8.19-2.el7.x86_64`.
+
+For *redhat*\* linux version, we can install as the following:
+
+```bash
+yum install yum-utils #for debuginfo-install
+yum install systemtap
+yum install kernelname-devel-version
+debuginfo-install kernelname-version
+```
 
 
 contribute
