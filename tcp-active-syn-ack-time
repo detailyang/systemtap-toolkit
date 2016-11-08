@@ -42,7 +42,7 @@ chop $preamble;
 my $stap_src = <<_EOC_;
 $preamble
 
-global collect, intervals
+global collect%, intervals%
 
 
 probe kernel.function("tcp_transmit_skb") {

@@ -88,8 +88,8 @@ if ($slowtime !~ /^\d+$/) {
 my $stap_args = $opts{a} || '';
 
 my $preamble = <<_EOS_;
-global tracet
-global trace
+global tracet%
+global trace%
 global nreqs
 
 probe begin {

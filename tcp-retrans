@@ -35,7 +35,7 @@ chop $preamble;
 my $stap_src = <<_EOC_;
 $preamble
 
-global record
+global record%
 
 probe kernel.function("tcp_retransmit_skb") {
     sock = \$sk

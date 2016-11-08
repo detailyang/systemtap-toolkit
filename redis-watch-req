@@ -115,10 +115,10 @@ struct sdshdr {
 };
 %}
 
-global whitelist%
-global tracet
-global tracef
-global tracer
+global whitelist
+global tracet%
+global tracef%
+global tracer%
 global nreqs
 global pids%
 

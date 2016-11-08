@@ -49,7 +49,7 @@ chomp $preamble;
 my $stap_src =<<_EOC_;
 $preamble
 
-global vars
+global vars%
 
 probe \$1 {
     if (pid() != target()) next

@@ -35,8 +35,8 @@ if ($time !~ /^\d+$/) {
 
 
 my $preamble = <<_EOS_;
-global thread_args
-global thread_t
+global thread_args%
+global thread_t%
 global blacklist[2]
 
 probe begin {

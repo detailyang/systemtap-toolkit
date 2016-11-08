@@ -23,7 +23,7 @@ my $stap_args = $opts{a} || "";
 my $time = $opts{t} || 5000;
 
 my $stap_src = <<_EOC_;
-global r, w, io
+global r%, w%, io%
 
 probe begin {
     warn("Collecting IO Process Top 10 with interval of ${time}ms")

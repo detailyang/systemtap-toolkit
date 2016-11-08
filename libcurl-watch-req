@@ -80,8 +80,8 @@ _EOS_
 my $preamble = <<_EOS_;
 #! /usr/bin/env stap
 
-global trace
-global tracet
+global trace%
+global tracet%
 global nreqs
 
 probe begin {
