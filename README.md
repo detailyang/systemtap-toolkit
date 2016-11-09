@@ -4,6 +4,7 @@
 [@brendangregg]: https://github.com/brendangregg
 [@fche]: https://web.elastic.org/~fche/
 [dwarf]: http://www.dwarfstd.org/
+[tcpguide]: http://www.tcpipguide.com/free/t_TCPOperationalOverviewandtheTCPFiniteStateMachineF-2.htm
 
 <h1 align="center">systemtap-toolkit</h1>
 
@@ -80,7 +81,7 @@ Special thanks to [@brendangregg]、 [@agentzh] and [@fche]. All I have learn fo
 
 tcp-passive-syn-ack-time
 ===============
-It's used to measure the time of syn packet to ack packet on the server side in the tcp-3-shakehands.
+It's used to measure the time of syn packet to ack packet on the server side in the tcp-3-shakehands(Thanks [tcpguide]).
 
 ![tcp](https://raw.githubusercontent.com/detailyang/systemtap-toolkit/master/fixtures/tcp.jpg)
 
@@ -103,7 +104,7 @@ value |-------------------------------------------------- count
 
 tcp-active-syn-ack-time
 ===============
-It's used to measure the time of syn packet to ack packet on the client side in the tcp-3-shakehands.
+It's used to measure the time of syn packet to ack packet on the client side in the tcp-3-shakehands(Thanks [tcpguide]).
 
 ![tcp](https://raw.githubusercontent.com/detailyang/systemtap-toolkit/master/fixtures/tcp.jpg)
 
