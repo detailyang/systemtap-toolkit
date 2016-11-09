@@ -270,12 +270,12 @@ It traceing io Read|Write with the view of process(pid).
 [root@localhost systemtap-toolkit]# ./io-process-top  -t 1000
 WARNING: Collecting IO Process Top 10 with interval of 1000ms
         Process Name          Read(KB)   Write(KB)
-        redis-server:4510            3           0
-              stapio:28280           2           0
-     systemd-journal:442             0           0
-             systemd:1               0           0
-                sshd:19948           0           0
-        in:imjournal:595             0           0
+        redis-server(4510)            3           0
+              stapio(28280)           2           0
+     systemd-journal(442)             0           0
+             systemd(1)               0           0
+                sshd(19948)           0           0
+        in:imjournal(595)             0           0
 ````
 
 
