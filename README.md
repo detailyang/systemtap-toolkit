@@ -2,6 +2,7 @@
 [agentzh]: https://github.com/openresty/nginx-systemtap-toolkit#sample-bt
 [@agentzh]: https://github.com/agentzh
 [@brendangregg]: https://github.com/brendangregg
+[@fche]: https://web.elastic.org/~fche/
 [dwarf]: http://www.dwarfstd.org/
 
 <h1 align="center">systemtap-toolkit</h1>
@@ -75,7 +76,7 @@ You can choose the ways as the following to help this project.
 
 thanks
 ==========
-Special thanks to [@brendangregg] and [@agentzh]. All I have learn is from their amazing blog posts and projects:)
+Special thanks to [@brendangregg]、 [@agentzh] and [@fche]. All I have learn for [systemtap] is from their amazing blog posts and projects:)
 
 tcp-passive-syn-ack-time
 ===============
