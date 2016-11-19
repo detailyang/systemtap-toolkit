@@ -49,6 +49,7 @@ Table of Contents
 * [io-process-top](#io-process-top)
 * [phpredis-watch-req](#phpredis-watch-req)
 * [nssdns-watch-question](#nssdns-watch-question)
+* [phpfpm-watch-req](#phpfpm-watch-req)
 
 requirements
 ============
@@ -56,8 +57,8 @@ requirements
 We need [systemtap] and [dwarf].
 some scripts are working on kernel space and other is working on the user space.
 
-For kernel space, we need kernel debuginfo like `kernel-debuginfo-3.10.0-327.28.3.el7.x86_64`.    
-For user space, we need user application debuginfo like `redis-debuginfo-2.8.19-2.el7.x86_64`.    
+For kernel space, we need kernel debuginfo like `kernel-debuginfo-3.10.0-327.28.3.el7.x86_64`.
+For user space, we need user application debuginfo like `redis-debuginfo-2.8.19-2.el7.x86_64`.
 
 For *redhat*\* linux version, we can install as the following:
 
@@ -309,5 +310,15 @@ curl(11788): www.facebook.com 57406us
 curl(11790): www.github.com 4203477us
 ```
 
+phpfpm-watch-req
+================
+It tracing phpfpm request
 
-
+```bash
+# ./phpfpm-watch-req -l /opt/php/sbin/php-fpm
+WARNING: Tracing php-fpm for pid(0)
+php-fpm(9665) GET /index.php?&123123=123&f=q (208us)
+php-fpm(9665) GET /index.php?&123123=123&f=q (172us)
+php-fpm(9665) GET /index.php?&123123=123&f=q (154us)
+php-fpm(9665) GET /index.php?&123123=123&f=q (151us)
+```
