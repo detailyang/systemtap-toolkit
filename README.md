@@ -303,7 +303,7 @@ net-process-top
 It traceing net Send|Recv with the view of process(pid).
 
 ```bash
-^C[root@localhost systemtap-toolkit]# ./net-process-top -t 5000
+[root@localhost systemtap-toolkit]# ./net-process-top -t 5000
 WARNING: Collecting Net Process Top 10 with interval of 5000ms
              Process(    0)    dev   Send(PK)   Recv(PK)   Send(KB)   Recv(KB)
                nginx( 7266)     lo     446203          0     144471          0
