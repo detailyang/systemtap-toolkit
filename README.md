@@ -47,6 +47,7 @@ Table of Contents
 * [libcurl-watch-req](#libcurl-watch-req)
 * [pdomysql-watch-query](#pdomysql-watch-query)
 * [io-process-top](#io-process-top)
+* [net-process-top](#net-process-top)
 * [phpredis-watch-req](#phpredis-watch-req)
 * [nssdns-watch-question](#nssdns-watch-question)
 * [phpfpm-watch-req](#phpfpm-watch-req)
@@ -295,7 +296,21 @@ WARNING: Collecting IO Process Top 10 with interval of 1000ms
              systemd(1)               0           0
                 sshd(19948)           0           0
         in:imjournal(595)             0           0
-````
+```
+
+net-process-top
+=================
+It traceing net Send|Recv with the view of process(pid).
+
+```bash
+^C[root@localhost systemtap-toolkit]# ./net-process-top -t 5000
+WARNING: Collecting Net Process Top 10 with interval of 5000ms
+             Process(    0)    dev   Send(PK)   Recv(PK)   Send(KB)   Recv(KB)
+               nginx( 7266)     lo     446203          0     144471          0
+                 wrk(27496)     lo     156601          0      15599          0
+           rcu_sched(   10)   eth0          0          1          0          0
+                sshd( 6890)   eth0          1          0          0          0
+```
 
 nssdns-watch-question
 =====================
