@@ -52,6 +52,7 @@ Table of Contents
 * [phpredis-watch-req](#phpredis-watch-req)
 * [nssdns-watch-question](#nssdns-watch-question)
 * [phpfpm-watch-req](#phpfpm-watch-req)
+* [swoole-redis-watch](#swoole-redis-watch)
 
 requirements
 ============
@@ -352,3 +353,33 @@ php-fpm(9665) GET /index.php?&123123=123&f=q (172us)
 php-fpm(9665) GET /index.php?&123123=123&f=q (154us)
 php-fpm(9665) GET /index.php?&123123=123&f=q (151us)
 ```
+
+swoole-redis-watch
+==================
+It tracing swoole-redis write and read subroutine
+
+```bash
+./swoole-redis-watch -l /opt/php/lib/php/extensions/no-debug-non-zts-20131226/swoole.so -t 100000
+WARNING: Tracing swoole.so(/opt/php/lib/php/extensions/no-debug-non-zts-20131226/swoole.so) for pid:0
+php(25927) is writing for 10.200.175.90:6379 to *3
+$4
+hGet
+$4
+step
+$10
+attachment
+ len:41
+10.200.175.90:6379 get reply: integer:710263830
+php(29486) is writing for 10.200.175.90:6379 to *3
+$4
+hGet
+$4
+step
+$10
+attachment
+ len:41
+10.200.175.90:6379 get reply: integer:709720993
+```
+
+
+
